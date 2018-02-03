@@ -22,7 +22,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	public List<String> listIdEmployee() {
            List<String> list1 = new ArrayList<String>();
-           Set<String> list = conn.smembers("grupos:usuario:set");
+           Set<String> list = conn.lrange("grupos:usuario:set");
            for(String st : list) { 
              list1.add(st);
            }
@@ -31,7 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	public List<String> listIdGroup(String nombre) {
         List<String> list2 = new ArrayList<String>();
-        Set<String> list = conn.smembers("grupos:usuario:"+nombre+":grupos", 0, -1);
+        Set<String> list = conn.lrange("grupos:usuario:"+nombre+":grupos", 0, -1);
         for(String st : list) { 
           list2.add(st);
         }
