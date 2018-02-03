@@ -3,10 +3,14 @@
 ## Requisitos:  
 Debe tener instalado:
 
--Java.
--Maven.
--Apache.
--Redis-server.
+-Java
+
+-Maven
+
+-Apache
+
+-Redis-server
+
 -Spring se instalará automáticamente al desplegar si no lo tiene al ser una dependencia del proyecto.
 
 ## Funcionamiento: 
