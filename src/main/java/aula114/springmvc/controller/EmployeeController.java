@@ -27,30 +27,35 @@ public class EmployeeController {
      return "consulta";
   }
 
-  @RequestMapping(value="/show/{item}", method=RequestMethod.GET)
-  public String show(@PathVariable("item")String param, Model model) {
-      System.out.println("Nombre:" + param);    
-      model.addAttribute("nombre", param);
+  @RequestMapping(value="/show/{item}")
+  public String show(@PathVariable("item")String item, Model model) {
+      System.out.println("Nombre:" + item);    
       List<String> list2 = new ArrayList<String>();
-      list2 = employeeService.listGroups(param);
+      list2 = employeeService.listGroups(item);
       model.addAttribute("grupos", list2);
       return "show";
   }
   
-  @RequestMapping(value="/fichaAlumnos/{item}", method=RequestMethod.GET)
-  public String fichaAlumnos(@PathVariable("item")String param, Model model) {
-      System.out.println("Grupo:" + param);
-      model.addAttribute("nombre", param);
+  @RequestMapping(value="/fichaAlumnos/{item}")
+  public String fichaAlumnos(@PathVariable("item")String item, Model model) {
+      System.out.println("Grupo:" + item);
       List<String> list2 = new ArrayList<String>();
-      list2 = employeeService.listGroupsAlumnos(param);
+      list2 = employeeService.listGroupsAlumnos(item);
       model.addAttribute("alumnos", list2);
       return "fichaAlumnos";
   }
   
   @RequestMapping(value="/ficha/{item}", method=RequestMethod.GET)
-  public String mostrarFicha (@PathVariable("item")String param, Model model) {
-	  model.addAttribute("nombre",param);
+  public String mostrarFicha (@PathVariable("item")String item, Model model) {
+	  model.addAttribute("nombre",item);
       return "ficha";
+  }
+
+  @RequestMapping("/anotacion")
+  public String mostrar(@RequestParam("item") String item, Model model) {
+    System.out.println(nota);
+    model.addAttribute("nota", nota);
+    return "employee";
   }
   
 }

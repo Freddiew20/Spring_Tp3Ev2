@@ -9,12 +9,14 @@
   <title>Comenzando con Spring MVC</title>
  </head>
  <body>
-    <p>
-    </p>
-<form>
-	<h1>Ficha del alumno ${nombre}</h1>
-	<textarea rows="20" cols="20" value="ficha"></textarea>        
+ <form action="/almacenar">
+  <h1 style="color: green; text-align: center;">Ficha del alumno ${nombre}</h1>
+    
+    <textarea  value="/almacenar/bueno" cols="60" rows="10" var="item" name="nota">${item}
+      
+    </textarea>
+     
+    <input id="submit" type="submit" tabindex="5" value="almacenar">
  </form>
- <input type="submit" action="">
  </body>
 </html>

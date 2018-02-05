@@ -11,11 +11,15 @@ Debe tener instalado:
 
 -Redis-server
 
+-Python 
+
 -Spring se instalará automáticamente al desplegar si no lo tiene al ser una dependencia del proyecto.
 
 ## Funcionamiento: 
-      Despliegue con: $mvn install jetty:run 
--Hay que cargar la base de datos en redis antes de desplegar (no proporcionada en el proyecto aún)
       
-**Programa aún por revisar un fallo de compilación**
+		-Hay que cargar la base de datos en redis antes de desplegar, para ello ejecutamos: $python datos_redis.py
 
+		-Despliegue con: $mvn install jetty:run 
+
+		-Uso de la aplicación: En localhost:9999/employee podemos utilizar la aplicación.
+		
