@@ -10,6 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import aula114.springmvc.service.EmployeeService;
 import aula114.springmvc.domain.Contact;
 
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.ModelAndView;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -27,35 +33,34 @@ public class EmployeeController {
      return "consulta";
   }
 
-  @RequestMapping(value="/show/{item}")
-  public String show(@PathVariable("item")String item, Model model) {
-      System.out.println("Nombre:" + item);    
-      List<String> list2 = new ArrayList<String>();
-      list2 = employeeService.listGroups(item);
-      model.addAttribute("grupos", list2);
-      return "show";
-  }
-  
-  @RequestMapping(value="/fichaAlumnos/{item}")
-  public String fichaAlumnos(@PathVariable("item")String item, Model model) {
-      System.out.println("Grupo:" + item);
-      List<String> list2 = new ArrayList<String>();
-      list2 = employeeService.listGroupsAlumnos(item);
-      model.addAttribute("alumnos", list2);
-      return "fichaAlumnos";
-  }
-  
-  @RequestMapping(value="/ficha/{item}", method=RequestMethod.GET)
-  public String mostrarFicha (@PathVariable("item")String item, Model model) {
-	  model.addAttribute("nombre",item);
-      return "ficha";
-  }
+  @RequestMapping("/show/{id}")
+	public String saludar(@PathVariable("id") String id, Model model) {
+		List<String> listgrupos = new ArrayList<String>();
+     	listgrupos = employeeService.listGrupos(id);
+     	model.addAttribute("grupos", listgrupos);
+		return "saludar";
+	}
 
-  @RequestMapping("/anotacion")
-  public String mostrar(@RequestParam("item") String item, Model model) {
-    System.out.println(nota);
-    model.addAttribute("nota", nota);
-    return "employee";
-  }
-  
+	@RequestMapping("/show_grupo/{grupo}")
+	public String alumno(@PathVariable("grupo") String grupo, Model model) {
+		List<String> listalumnos = new ArrayList<String>();
+     	listalumnos = employeeService.listAlumnos(grupo);
+     	model.addAttribute("alumno", listalumnos);
+		return "info_grupo";
+	}
+
+	@RequestMapping("/nota/{alumno}")
+	public String nota(@PathVariable("alumno") String alumno, Model model) {
+		model.addAttribute("nombre", alumno);
+		System.out.println(alumno);
+		return "nota";
+	}
+
+	@RequestMapping("/almacenar")
+	public String mostrar(@RequestParam("nota") String nota, Model model) {
+		System.out.println(nota);
+		model.addAttribute("nota", nota);
+		return "confirmar";
+	}
+
 }

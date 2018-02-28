@@ -9,12 +9,12 @@
  </head>
  <body>
  <form action="/show">
-  <h1 style="color: green; text-align: center;">Lista de Profesores</h1>
+  <h1 style="color: green; text-align: center;">Grupos</h1>
     <p>
      <select name="clave" onChange="window.location.href=this.value">
        <option value="">Selecciona uno</option> 
-      <c:forEach var="item" items="${list}">
-       <option value="/show/${item}">${item}</option> 
+      <c:forEach var="item" items="${grupos}">
+       <option value="/show_grupo/${item}">${item}</option> 
       </c:forEach>
      </select>
     </p>

@@ -22,30 +22,26 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	public List<String> listIdEmployee() {
            List<String> list1 = new ArrayList<String>();
-           Set<String> list = conn.lrange("grupos:usuario:set");
+           Set<String> list = conn.smembers("grupos:usuario:nombres");
            for(String st : list) { 
              list1.add(st);
            }
            return list1;
 	}
-	
-	public List<String> listIdGroup(String nombre) {
-        List<String> list2 = new ArrayList<String>();
-        Set<String> list = conn.lrange("grupos:usuario:"+nombre+":grupos", 0, -1);
-        for(String st : list) { 
-          list2.add(st);
-        }
-        return list2;
-	}
 
-  public List<String> listGroupsAlumnos(String nombre){
-        List<String> list2 = new ArrayList<String>();
-        List<String> list = conn.lrange("grupos:grupo:"+nombre, 0, -1);
-        for(String st : list) { 
-          list2.add(st);
-        }
-        return list2;   
-    
+  public List<String> listGrupos(String name) {
+           List<String> listgrupos = new ArrayList<String>();
+           for(String st : conn.lrange("grupos:usuario:"+name+":grupos", 0, -1)) { 
+             listgrupos.add(st);
+           }
+           return listgrupos;
   }
-	
+
+  public List<String> listAlumnos(String grupo) {
+           List<String> listalumno = new ArrayList<String>();
+           for(String st : conn.lrange("grupos:grupo:"+grupo, 0, -1)) { 
+             listalumno.add(st);
+           }
+           return listalumno;
+  }
 }

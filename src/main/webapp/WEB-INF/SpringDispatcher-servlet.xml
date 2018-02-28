@@ -11,7 +11,8 @@
   <context:property-placeholder
                 location="classpath*:META-INF/database.properties" />
 
-  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+  <bean
+   class="org.springframework.web.servlet.view.InternalResourceViewResolver">
    <property name="prefix">
      <value>/WEB-INF/views/</value>
    </property>

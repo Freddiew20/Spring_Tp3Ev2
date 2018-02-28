@@ -7,7 +7,8 @@ import aula114.springmvc.domain.Contact;
 public interface EmployeeService {
 
 	public List<String> listIdEmployee();
-	public List<String> listIdGroup(String nombre);
-	public List<String> listGroupsAlumnos(String nombre);
+	public List<String> listGrupos(String name);
+	public List<String> listAlumnos(String grupo);
+
 	//public Contact show(String id);
 }

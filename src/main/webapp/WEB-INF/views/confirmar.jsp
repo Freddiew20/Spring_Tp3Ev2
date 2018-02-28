@@ -8,17 +8,10 @@
   <title>Comenzando con Spring MVC</title>
  </head>
  <body>
- <form action="/show">
-  <h1 style="color: green; text-align: center;">Lista de Profesores</h1>
-    <p>
-     <select name="clave" onChange="window.location.href=this.value">
-       <option value="">Selecciona uno</option> 
-      <c:forEach var="item" items="${list}">
-       <option value="/show/${item}">${item}</option> 
-      </c:forEach>
-     </select>
-    </p>
-    <input id="submit" type="submit" tabindex="5" value="Show">
+ <form action="/employee">
+  <h1 style="color: green; text-align: center;">Se ha añadido la nota correctamente:</h1>
+    <p>${nota}</p>
+    <input id="submit" type="submit" tabindex="5" value="Volver">
  </form>
  </body>
 </html>
